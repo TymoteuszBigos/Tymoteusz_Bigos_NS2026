@@ -42,14 +42,18 @@ public class sc : MonoBehaviour
         Debug.Log(dane.Count);
         dane.Clear();
         Debug.Log(dane.Count);
-        print("Test");
-
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public int Test()
+    {
+        return 1;
     }
 
 }
