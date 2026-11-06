@@ -6,17 +6,21 @@ public class Zad1 : MonoBehaviour
 {
     public GameObject[] gameObjects;
     public GameObject test;
-    public Gradient grad;
+    public Gradient grad1;
+    public Gradient grad2;
+    float changeparameter;
+    Color newColor;
     // Start is called before the first frame update
     void Start()
     {
+        InvokeRepeating("CheckSet", 0, 1);
 
-        CheckSet();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         
     }
     void CheckSet()
@@ -28,7 +32,7 @@ public class Zad1 : MonoBehaviour
             if (tempComp != null)
             {
 
-                Object3d(tempComp.transform);
+                Object3d(tempComp.transform, i.GetComponent<MeshRenderer>());
             }
            
 
@@ -42,16 +46,20 @@ public class Zad1 : MonoBehaviour
 
         }
     }
-    void Object3d(Transform t)
+    void Object3d(Transform t, MeshRenderer m)
     {
+        float localrot = t.localEulerAngles.y;
 
+        changeparameter = localrot/360;
+        newColor = grad2.Evaluate(changeparameter);
+        m.material.color = newColor;
         Debug.Log("3d");
     }
 
     void Object2d(SpriteRenderer s)
     {
-        float changedFloatParamenter = s.transform.position.y / 100;
-        Color newColor = grad.Evaluate(changedFloatParamenter);
+        changeparameter = s.transform.position.y / 100;
+        newColor = grad1.Evaluate(changeparameter);
         s.material.color = newColor;
 
         Debug.Log("2d");
