@@ -28,7 +28,7 @@ public class Zad1 : MonoBehaviour
         foreach (GameObject i in gameObjects)
         {
             Component tempComp = i.GetComponent<MeshRenderer>();
-
+            
             if (tempComp != null)
             {
 
